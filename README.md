@@ -39,7 +39,7 @@ make re      # fclean + make
 
 **ex00 – Megaphone**
 ```bash
-./megaphone "Hello World" "foo bar"
+./megaphone "Hello World foo bar"
 # Output: HELLO WORLD FOO BAR
 ```
 
