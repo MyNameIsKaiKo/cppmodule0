@@ -12,6 +12,21 @@
 
 #include "../include/PhoneBook.hpp"
 
+int	isValidString(std::string s)
+{
+	int	i;
+
+	i = 0;
+	if (s == "\0" || s.empty())
+		return (0);
+	while (s[i])
+	{
+		if (!std::isspace((s[i])))
+			return (1);
+	}
+	return (0);
+}
+
 void	addPhoneBook(PhoneBook *pb)
 {
 	std::string firstName;
@@ -21,16 +36,31 @@ void	addPhoneBook(PhoneBook *pb)
 	std::string biggestSecret;
 
 	std::cout << "---------------------------" << std::endl;
-	std::cout << "|         ENTER FIRST NAME|" << std::endl;
-	std::getline(std::cin, firstName);
-	std::cout << "|          ENTER LAST NAME|" << std::endl;
-	std::getline(std::cin, lastName);
-	std::cout << "|           ENTER NICKNAME|" << std::endl;
-	std::getline(std::cin, nickName);
-	std::cout << "|       ENTER PHONE NUMBER|" << std::endl;
-	std::getline(std::cin, phoneNumber);
-	std::cout << "| ENTER THE DARKEST SECRET|" << std::endl;
-	std::getline(std::cin, biggestSecret);
+	while (!isValidString(firstName))
+	{
+		std::cout << "|         ENTER FIRST NAME|" << std::endl;
+		std::getline(std::cin, firstName);
+	}
+	while (!isValidString(lastName))
+	{
+		std::cout << "|          ENTER LAST NAME|" << std::endl;
+		std::getline(std::cin, lastName);
+	}
+	while (!isValidString(nickName))
+	{
+		std::cout << "|           ENTER NICKNAME|" << std::endl;
+		std::getline(std::cin, nickName);
+	}
+	while (!isValidString(phoneNumber))
+	{
+		std::cout << "|       ENTER PHONE NUMBER|" << std::endl;
+		std::getline(std::cin, phoneNumber);
+	}
+	while (!isValidString(biggestSecret))
+	{
+		std::cout << "| ENTER THE DARKEST SECRET|" << std::endl;
+		std::getline(std::cin, biggestSecret);
+	}
 	std::cout << "---------------------------" << std::endl;
 	pb->addContact(firstName, lastName,  nickName, phoneNumber, biggestSecret);
 }
@@ -60,6 +90,8 @@ int	main(void)
 		std::cout << "|    ADD, SEARCH OR EXIT..|" << std::endl;
 		std::cout << "---------------------------" << std::endl;
 		std::getline(std::cin, input);
+		if (input == "\0")
+			return (0);
 		if (input == "ADD")
 			addPhoneBook(&pb);
 		else if (input == "SEARCH")

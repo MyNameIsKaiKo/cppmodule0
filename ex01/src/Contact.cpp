@@ -53,10 +53,10 @@ void	Contact::setHidden(int hidden)
 
 void	Contact::setPhoneNumber(std::string phoneNumber)
 {
-	while (phoneNumber.length() != 10)
+	while (phoneNumber.length() < 10)
 	{
 		std::cout << "---------------------------" << std::endl;
-		std::cout << "|       WROND PHONE NUMBER|";
+		std::cout << "|       WROND PHONE NUMBER|" << std::endl;
 		std::cout << "---------------------------" << std::endl;
 		std::getline(std::cin, phoneNumber);
 	}
