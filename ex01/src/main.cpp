@@ -91,7 +91,7 @@ int	main(void)
 		std::cout << "---------------------------" << std::endl;
 		std::getline(std::cin, input);
 		if (input == "\0")
-			return (0);
+			continue ;
 		if (input == "ADD")
 			addPhoneBook(&pb);
 		else if (input == "SEARCH")

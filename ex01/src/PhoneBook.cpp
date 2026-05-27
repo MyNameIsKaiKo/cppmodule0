@@ -62,7 +62,7 @@ void	PhoneBook::addContact(std::string firstName, std::string lastName,
 void	PhoneBook::getContact(int index)
 {
 
-	if (index <= 0 || index > 8)
+	if ((index <= 0 || index > 8) || index > this->_contactsCount)
 	{
 		std::cout << std::setw(10);
 		std::cout << "Wrong Id" << std::endl;
